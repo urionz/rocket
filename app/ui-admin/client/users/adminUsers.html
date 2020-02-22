@@ -38,7 +38,15 @@
 									<div class="table-fake-th">{{_ "Roles"}}</div>
 								</th>
 								<th width="33%">
-									<div class="table-fake-th">{{_ "Status"}}</div>
+									<div class="table-fake-th">
+										<select name="status" id="filter-status">
+											<option value="">{{_ "Status"}}</option>
+											{{#each statusOptions}}
+											<option value="{{value}}">{{label}}</option>
+											{{/each}}
+											<option value="{{statusDeactivated.value}}">{{statusDeactivated.label}}</option>
+										</select>
+									</div>
 								</th>
 							</tr>
 						</thead>

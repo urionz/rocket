@@ -54,6 +54,12 @@ Template.adminUsers.helpers({
 			}
 		};
 	},
+	statusDeactivated() {
+		return Template.instance().statusDeactivated.get();
+	},
+	statusOptions() {
+		return Template.instance().statusOptions.get();
+	},
 	// onTableItemClick() {
 	// 	const instance = Template.instance();
 	// 	return function(item) {
@@ -69,11 +75,29 @@ Template.adminUsers.onCreated(function() {
 	const instance = this;
 	this.offset = new ReactiveVar(0);
 	this.filter = new ReactiveVar('');
+	this.status = new ReactiveVar('');
 	this.ready = new ReactiveVar(true);
 	this.tabBar = new RocketChatTabBar();
 	this.tabBar.showGroup(FlowRouter.current().route.name);
 	this.tabBarData = new ReactiveVar();
 	this.users = new ReactiveVar([]);
+	this.statusDeactivated = new ReactiveVar({
+		value: 'deactivated',
+		label: '未激活',
+	});
+	this.statusOptions = new ReactiveVar([{
+		value: 'online',
+		label: '在线',
+	}, {
+		value: 'offline',
+		label: '离线',
+	}, {
+		value: 'away',
+		label: '离开',
+	}, {
+		value: 'busy',
+		label: '忙碌',
+	}]);
 
 	TabBar.addButton({
 		groups: ['admin-users'],
@@ -100,7 +124,7 @@ Template.adminUsers.onCreated(function() {
 		order: 3,
 	});
 
-	this.loadUsers = async (filter, offset) => {
+	this.loadUsers = async (filter, offset, status = '') => {
 		this.ready.set(false);
 
 		const query = {
@@ -110,8 +134,17 @@ Template.adminUsers.onCreated(function() {
 				{ name: { $regex: filter, $options: 'i' } },
 			],
 		};
+
+		if (status !== '') {
+			if (status === this.statusDeactivated.value) {
+				query.active = false;
+			} else {
+				query.status = status;
+			}
+		}
+
 		let url = `users.list?count=${ USERS_COUNT }&offset=${ offset }`;
-		if (filter) {
+		if (filter || status) {
 			url += `&query=${ JSON.stringify(query) }`;
 		}
 		const { users } = await APIClient.v1.get(url);
@@ -126,8 +159,9 @@ Template.adminUsers.onCreated(function() {
 	this.autorun(async () => {
 		const filter = instance.filter.get();
 		const offset = instance.offset.get();
+		const status = instance.status.get();
 
-		this.loadUsers(filter, offset);
+		this.loadUsers(filter, offset, status);
 	});
 });
 
@@ -160,8 +194,9 @@ Template.adminUsers.events({
 			onChange() {
 				const filter = instance.filter.get();
 				const offset = instance.offset.get();
+				const status = instance.status.get();
 
-				instance.loadUsers(filter, offset);
+				instance.loadUsers(filter, offset, status);
 			},
 		});
 		instance.tabBar.open('admin-user-info');
@@ -177,5 +212,9 @@ Template.adminUsers.events({
 		e.preventDefault();
 		e.stopPropagation();
 		t.offset.set(t.offset.get() + USERS_COUNT);
+	},
+	'change #filter-status'(e, t) {
+		t.status.set(e.currentTarget.value);
+		t.offset.set(0);
 	},
 });
