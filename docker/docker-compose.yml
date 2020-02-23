@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services:
+  rocket:
+    build:
+      context: ./rocket
+    environment:
+      - DEPLOY_METHOD=docker
+      - NODE_ENV=production
+      - MONGO_URL=mongodb://mongo:27017/rocketchat
+      - MONGO_OPLOG_URL=mongodb://mongo:27017/local
+      - HOME=/tmp
+      - PORT=3000
+      - ROOT_URL=http://localhost:3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - mongo-replica
+    networks:
+      - frontend
+      - backend
+
+  mongo:
+    build:
+      context: ./mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+
+  mongo-replica:
+    build: ./mongo-replica
+    depends_on:
+      - mongo
+    networks:
+      - backend
