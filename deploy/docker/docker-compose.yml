@@ -10,6 +10,8 @@ services:
   nginx:
     build:
       context: ./nginx
+    volumes: 
+      - ./nginx/sites/:/etc/nginx/sites-available
     depends_on: 
       - rocket
     ports: 
