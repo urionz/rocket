@@ -1,5 +1,7 @@
 FROM nginx:alpine
 
+COPY nginx.conf /etc/nginx/
+
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 
 RUN apk update \
