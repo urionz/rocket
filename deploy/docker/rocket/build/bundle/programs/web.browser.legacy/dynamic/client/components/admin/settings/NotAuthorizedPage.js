@@ -1,0 +1,2 @@
+function module(n,t,e){var a,o,r,u;function i(){var n=r();return o.createElement(u,null,o.createElement(u.Content,null,o.createElement(a,null,n("You_are_not_authorized_to_view_this_page"))))}e.export({NotAuthorizedPage:function(){return i}}),e.link("@rocket.chat/fuselage",{Paragraph:function(n){a=n}},0),e.link("react",{default:function(n){o=n}},1),e.link("../../../contexts/TranslationContext",{useTranslation:function(n){r=n}},2),e.link("../../basic/Page",{Page:function(n){u=n}},3)}
+
