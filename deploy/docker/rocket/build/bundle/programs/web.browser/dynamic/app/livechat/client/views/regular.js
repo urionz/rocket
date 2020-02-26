@@ -1,0 +1,2 @@
+function module(a,i,t){t.link("./app/livechatAutocompleteUser"),t.link("./app/livechatQueue"),t.link("./app/livechatReadOnly"),t.link("./app/livechatNotSubscribed.html"),t.link("./app/livechatRoomTagSelector"),t.link("./app/tabbar/agentEdit"),t.link("./app/tabbar/agentInfo"),t.link("./app/tabbar/externalSearch"),t.link("./app/tabbar/visitorEdit"),t.link("./app/tabbar/visitorForward"),t.link("./app/tabbar/visitorHistory"),t.link("./app/tabbar/visitorInfo"),t.link("./app/tabbar/visitorNavigation")}
+
