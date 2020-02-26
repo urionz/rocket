@@ -27,4 +27,8 @@ COPY logrotate/nginx /etc/logrotate.d/
 RUN echo "upstream rocket-upstream { server ${ROCKET_UPSTREAM_CONTAINER}:${ROCKET_UPSTREAM_PORT}; }" > /etc/nginx/conf.d/upstream.conf \
     && rm /etc/nginx/conf.d/default.conf
 
+ADD ./startup.sh /opt/startup.sh
+RUN sed -i 's/\r//g' /opt/startup.sh
+CMD ["/bin/bash", "/opt/startup.sh"]
+
 EXPOSE 80 443
