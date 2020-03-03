@@ -32,6 +32,7 @@ services:
       - HOME=/tmp
       - PORT=3000
       - ROOT_URL=http://localhost:3000
+      - Accounts_AvatarStorePath=/app/uploads
     ports:
       - "3000:3000"
     depends_on:

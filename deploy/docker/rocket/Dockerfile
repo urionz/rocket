@@ -7,6 +7,8 @@ RUN set -x \
     && npm install \
     && npm cache clear --force
 
+VOLUME /app/uploads
+
 WORKDIR /app/bundle
 
 EXPOSE 3000
