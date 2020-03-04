@@ -2,10 +2,10 @@ FROM rocketchat/base:latest
 
 COPY build /app
 
-RUN set -x \
-    && cd /app/bundle/programs/server \
-    && npm install \
-    && npm cache clear --force
+# RUN set -x \
+#     && cd /app/bundle/programs/server \
+#     && npm install \
+#     && npm cache clear --force
 
 VOLUME /app/uploads
 
