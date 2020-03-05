@@ -1,0 +1,2 @@
+function module(e,t,r){let u,n,o,l,a,p;function s(e){let{groupId:t}=e;const r=p(t);return r?"Assets"===t?u.createElement(n,r):"OAuth"===t?u.createElement(o,r):u.createElement(l,r):u.createElement(a.Skeleton,null)}r.export({GroupSelector:()=>s}),r.link("react",{default(e){u=e}},0),r.link("./groups/AssetsGroupPage",{AssetsGroupPage(e){n=e}},1),r.link("./groups/OAuthGroupPage",{OAuthGroupPage(e){o=e}},2),r.link("./groups/GenericGroupPage",{GenericGroupPage(e){l=e}},3),r.link("./GroupPage",{GroupPage(e){a=e}},4),r.link("./SettingsState",{useGroup(e){p=e}},5)}
+

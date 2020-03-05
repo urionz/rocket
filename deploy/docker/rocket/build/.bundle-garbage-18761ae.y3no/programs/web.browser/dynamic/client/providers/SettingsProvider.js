@@ -1,0 +1,2 @@
+function module(e,t,n){let i,r,c,l;n.export({SettingsProvider:()=>o}),n.link("react",{default(e){i=e}},0),n.link("../../app/settings/client",{settings(e){r=e}},1),n.link("../contexts/SettingsContext",{SettingsContext(e){c=e}},2),n.link("./createObservableFromReactive",{createObservableFromReactive(e){l=e}},3);const s={get:l(e=>r.get(e)),set:(e,t)=>new Promise((n,i)=>{r.set(e,t,(e,t)=>{e?i(e):n(t)})}),batchSet:e=>new Promise((t,n)=>{r.batchSet(e,(e,i)=>{e?n(e):t(i)})})};function o(e){let{children:t}=e;return i.createElement(c.Provider,{children:t,value:s})}}
+
