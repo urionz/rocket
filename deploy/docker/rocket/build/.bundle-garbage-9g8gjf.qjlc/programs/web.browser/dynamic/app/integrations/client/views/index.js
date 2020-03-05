@@ -1,0 +1,2 @@
+function module(i,n,t){t.link("./integrations.html"),t.link("./integrations"),t.link("./integrationsNew.html"),t.link("./integrationsNew"),t.link("./integrationsIncoming.html"),t.link("./integrationsIncoming"),t.link("./integrationsOutgoing.html"),t.link("./integrationsOutgoing"),t.link("./integrationsOutgoingHistory.html"),t.link("./integrationsOutgoingHistory"),t.link("./additional/zapier.html")}
+
