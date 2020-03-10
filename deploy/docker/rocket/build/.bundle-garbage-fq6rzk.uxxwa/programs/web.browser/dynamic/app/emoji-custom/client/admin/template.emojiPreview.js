@@ -1,0 +1,2 @@
+function module(){Template.__checkName("emojiPreview"),Template.emojiPreview=new Template("Template.emojiPreview",(function(){var e=this;return HTML.DIV({class:"emojiAdminPreview"},"\n\t\t",HTML.DIV({class:"emojiAdminPreview-image","data-emoji":function(){return Spacebars.mustache(Spacebars.dot(e.lookup("."),"name"))},style:function(){return["background-image:url('",Spacebars.mustache(e.lookup("emojiUrlFromName"),Spacebars.dot(e.lookup("."),"name"),Spacebars.dot(e.lookup("."),"extension")),"');"]}}),"\n\t")}))}
+
