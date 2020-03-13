@@ -23,7 +23,7 @@
 	],
 	"scripts": {
 		"build": "rm -rf ../deploy/docker/build && meteor build --server-only --allow-superuser --directory ../deploy/docker/rocket/build",
-		"start": "meteor --port 3001",
+		"start": "meteor",
 		"debug": "meteor run --inspect",
 		"debug-brk": "meteor run --inspect-brk",
 		"lint": "meteor npm run stylelint && meteor npm run eslint",

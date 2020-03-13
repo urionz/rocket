@@ -136,7 +136,7 @@ Template.adminUsers.onCreated(function() {
 		};
 
 		if (status !== '') {
-			if (status === this.statusDeactivated.value) {
+			if (status == this.statusDeactivated.get().value) {
 				query.active = false;
 			} else {
 				query.status = status;
